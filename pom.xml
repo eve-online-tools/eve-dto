@@ -28,7 +28,7 @@
         <repository>
             <id>github</id>
             <name>GitHub OWNER Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/rowa78/eve-online-tool-suite</url>
+            <url>https://maven.pkg.github.com/eve-online-tools/maven-libs</url>
         </repository>
     </distributionManagement>
 
