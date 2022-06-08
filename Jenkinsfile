@@ -36,10 +36,6 @@ spec:
     volumeMounts:
       - name: jenkins-docker-cfg
         mountPath: /kaniko/.docker
-  hostAliases:
-    - ip: 172.19.4.104
-      hostnames:
-        - gerrit.faktorzehn.de
   volumes:
     - name: m2
       persistentVolumeClaim:
