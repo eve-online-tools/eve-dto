@@ -55,6 +55,8 @@ spec:
   restartPolicy: Never
   nodeSelector:
     kubernetes.io/arch: amd64
+  imagePullSecrets:
+    - name: externalregistry
 """
     }
   }
