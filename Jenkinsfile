@@ -19,7 +19,7 @@ spec:
     - cat
     tty: true
   - name: tools
-    image: ghcr.io/eve-online-tools/jenkins-tools:0.1
+    image: ghcr.io/eve-online-tools/jenkins-tools:0.2
     imagePullPolicy: IfNotPresent
     command:
     - cat
