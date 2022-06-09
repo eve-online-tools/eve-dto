@@ -54,6 +54,7 @@ spec:
       steps {
         container('maven') {
             sh 'mvn --version'
+            sh 'sleep 3600'
             configFileProvider([configFile(fileId: 'maven-settings.xml', variable: 'MAVEN_SETTINGS')]) {
                 sh 'mvn -s $MAVEN_SETTINGS -U -T 1C clean deploy'
             }
