@@ -19,7 +19,7 @@ spec:
     - cat
     tty: true
     volumeMounts:
-    - mountPath: /home/jenkins/.m2/repository
+    - mountPath: /root/.m2/repository
       name: m2
   volumes:
     - name: m2
@@ -54,7 +54,6 @@ spec:
       steps {
         container('maven') {
             sh 'mvn --version'
-            sh 'sleep 3600'
             configFileProvider([configFile(fileId: 'maven-settings.xml', variable: 'MAVEN_SETTINGS')]) {
                 sh 'mvn -s $MAVEN_SETTINGS -U -T 1C clean deploy'
             }
