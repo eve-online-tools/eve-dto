@@ -68,22 +68,12 @@ spec:
     stage('Build') {
       steps {
         container('maven') {
-  	      sh 'mvn --version'
-  	        configFileProvider([configFile(fileId: 'maven-settings.xml', variable: 'MAVEN_SETTINGS')]) {
-  	            sh 'mvn -s $MAVEN_SETTINGS -U -T 1C clean install -DskipTests'
-  	        }
-        }
-     }
-   }
-
-    stage('create & push docker-image') {
-        steps {        
-          container('kaniko') {
-              sh "/kaniko/executor --skip-tls-verify --dockerfile `pwd`/Dockerfile --context `pwd` --destination $TARGET_REGISTRY/wwk-ics:$BUILD_RELEASE_VERSION-$GERRIT_CHANGE_NUMBER --cleanup"
-              sh "/kaniko/executor --skip-tls-verify --dockerfile `pwd`/initIcsSchema.Dockerfile --context `pwd` --destination $TARGET_REGISTRY/init-ics-schema:$BUILD_RELEASE_VERSION-$GERRIT_CHANGE_NUMBER --cleanup"
-
-          }
+            sh 'mvn --version'
+            configFileProvider([configFile(fileId: 'maven-settings.xml', variable: 'MAVEN_SETTINGS')]) {
+                sh 'mvn -s $MAVEN_SETTINGS -U -T 1C clean deploy'
+            }
         }
       }
+    }
   }
 }
