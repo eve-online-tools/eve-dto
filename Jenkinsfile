@@ -20,7 +20,7 @@ spec:
     tty: true
     volumeMounts:
     - mountPath: /home/jenkins/.m2/repository
-      name: test-volume
+      name: m2
   volumes:
     - name: m2
       persistentVolumeClaim:
