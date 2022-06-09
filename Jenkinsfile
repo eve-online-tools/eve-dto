@@ -18,24 +18,9 @@ spec:
     command:
     - cat
     tty: true
-  - name: tools
-    image: ghcr.io/eve-online-tools/jenkins-tools:0.2
-    imagePullPolicy: IfNotPresent
-    command:
-    - cat
-    tty: true
-  - name: kaniko
-    image: gcr.io/kaniko-project/executor:debug
-    imagePullPolicy: IfNotPresent
-    command:
-      - /busybox/sh
-      - "-c"
-    args:
-      - /busybox/cat
-    tty: true
     volumeMounts:
-      - name: jenkins-docker-cfg
-        mountPath: /kaniko/.docker
+    - mountPath: /home/jenkins/.m2/repository
+      name: test-volume
   volumes:
     - name: m2
       persistentVolumeClaim:
